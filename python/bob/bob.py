@@ -4,7 +4,6 @@ def hey(what):
         return "Fine. Be that way!"
     elif what_strip.isupper():
         return "Whoa, chill out!"
-    elif what_strip[-1] == '?':
+    elif what_strip.endswith('?'):
         return "Sure."
-    else:
-        return "Whatever."
+    return "Whatever."
