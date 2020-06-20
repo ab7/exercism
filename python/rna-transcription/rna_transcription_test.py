@@ -24,6 +24,9 @@ class RnaTranscriptionTest(unittest.TestCase):
     def test_rna_complement(self):
         self.assertEqual(to_rna("ACGTGGTCTTAA"), "UGCACCAGAAUU")
 
+    def test_invalid_rna_complement(self):
+        self.assertEqual(to_rna("ACGTGGTCTNAA"), "Invalid DNA strand")
+
 
 if __name__ == "__main__":
     unittest.main()
