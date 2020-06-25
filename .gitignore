@@ -4,3 +4,4 @@ vendor
 venv
 .vscode/
 __pycache__/
+.exercism/
