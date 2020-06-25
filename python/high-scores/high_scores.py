@@ -12,7 +12,7 @@ def personal_best(scores: list) -> int:
     return max(scores)
 
 
-def personal_top_three(scores):
+def personal_top_three(scores: list) -> list:
     """
     Return top three scores from score collection.
     """
