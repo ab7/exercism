@@ -1,3 +1,6 @@
+from heapq import heapify, heappop
+
+
 def latest(scores: list) -> int:
     """
     Return the last added score from collection.
@@ -16,10 +19,6 @@ def personal_top_three(scores: list) -> list:
     """
     Return top three scores from score collection.
     """
-    top_three = scores[:3]
-    for score in scores[3:]:
-        for i, top in enumerate(top_three):
-            if score > top:
-                top_three[i] = score
-                break
-    return sorted(top_three, reverse=True)
+    scores_inverted = [~score for score in scores]
+    heapify(scores_inverted)
+    return [~heappop(scores_inverted) for _ in range(min(len(scores), 3))]
