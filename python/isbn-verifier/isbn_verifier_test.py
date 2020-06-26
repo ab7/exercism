@@ -57,6 +57,8 @@ class IsbnVerifierTest(unittest.TestCase):
     def test_input_is_too_long_but_contains_a_valid_isbn(self):
         self.assertIs(is_valid("98245726788"), False)
 
+    def test_input_with_invalid_delimiter(self):
+        self.assertIs(is_valid("3_598_21515_X"), False)
 
 if __name__ == "__main__":
     unittest.main()
