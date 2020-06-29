@@ -1,28 +1,31 @@
-from typing import List
-
-
 class Matrix:
-    """Matrix implements utiliy methods for parsing a matrix string.
+    """Matrix implements utility methods for parsing a matrix string.
 
     The initialized matrix string is assumed to have rows delimited by the Unix
     style newline character and columns delimited by the space character.
     """
 
-    Row = List[int]
-    Rows = List[Row]
-    Column = List[int]
+    def __init__(self, matrix_string: str,
+                 row_delimiter: str = ' ',
+                 col_delimiter: str = '\n') -> None:
+        self.row_delimiter = row_delimiter
+        self.col_delimiter = col_delimiter
+        self.rows = self.matrix_string.split(self.row_delimiter)
 
-    def __init__(self, matrix_string: str) -> None:
-        self.matrix_string = matrix_string
+    @staticmethod
+    def convert_list_type(items: list, item_type: type) -> list:
+        """Convert a list of items to provided type."""
+        return [item_type(item) for item in items]
 
-    def _converted_matrix(self) -> Rows:
-        """Convert a matrix string to a list using provided delimiters."""
-        return [[int(c) for c in r.split()] for r in self.matrix_string.split('\n')]
+    def row(self, index: int) -> list:
+        """Return row as list of integers at given index."""
+        row = self.rows[index - 1].split(self.col_delimiter)
+        return self.convert_list_type(row, int)
 
-    def row(self, index: int) -> Row:
-        """Return a Row by index using converted matrix string."""
-        return self._converted_matrix()[index - 1]
-
-    def column(self, index: int) -> Column:
-        """Return a Column by index using converted matrix string."""
-        return [row[index - 1] for row in self._converted_matrix()]
+    def column(self, index: int) -> list:
+        """Return column as list of integers at given index."""
+        column_list = []
+        for row in self.rows:
+            row = row.split(self.col_delimiter)
+            column_list.append(row[index - 1])
+        return self.convert_list_type(column_list, int)
