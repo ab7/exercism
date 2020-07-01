@@ -60,5 +60,6 @@ class IsbnVerifierTest(unittest.TestCase):
     def test_input_with_invalid_delimiter(self):
         self.assertIs(is_valid("3_598_21515_X"), False)
 
+
 if __name__ == "__main__":
     unittest.main()
