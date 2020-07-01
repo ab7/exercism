@@ -33,6 +33,12 @@ class ArmstrongNumbersTest(unittest.TestCase):
     def test_seven_digit_number_that_is_not_an_armstrong_number(self):
         self.assertIs(is_armstrong_number(9926314), False)
 
+    def test_largest_possible_armstrong_number(self):
+        self.assertIs(is_armstrong_number(115132219018763992565095597973971522401), True)
+
+    def test_larger_than_largest_possible(self):
+        self.assertIs(is_armstrong_number(115132219018763992565095597973971522402), False)
+
 
 if __name__ == "__main__":
     unittest.main()
