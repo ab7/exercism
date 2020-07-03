@@ -4,21 +4,15 @@
 package diffsquares
 
 // SquareOfSum calculates the square of the sum for the first n natural numbers.
+// See Faulhaber's formula.
 func SquareOfSum(n int) int {
-	sum := 0
-	for i := 1; i <= n; i++ {
-		sum += i
-	}
-	return sum * sum
+	return ((n * (n + 1)) / 2) * ((n * (n + 1)) / 2)
 }
 
 // SumOfSquares calculates the sum of the square of the first n natural numbers.
+// See Faulhaber's formula.
 func SumOfSquares(n int) int {
-	sum := 0
-	for i := 1; i <= n; i++ {
-		sum += i * i
-	}
-	return sum
+	return (n * (n + 1) * (2*n + 1)) / 6
 }
 
 // Difference calculates the difference of SquareOfSum and SumOfSquares output.
