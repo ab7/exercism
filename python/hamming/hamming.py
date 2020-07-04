@@ -4,8 +4,5 @@ def distance(strand_a: str, strand_b: str) -> int:
     """
     if len(strand_a) != len(strand_b):
         raise ValueError('DNA strand lengths do not match.')
-    ham = 0
-    for i in range(len(strand_a)):
-        if strand_a[i].lower() != strand_b[i].lower():
-            ham += 1
-    return ham
+    pairs = zip(strand_a.lower(), strand_b.lower())
+    return sum([1 for pair in pairs if pair[0] != pair[1]])
