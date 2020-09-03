@@ -1,29 +1,18 @@
 def score(word):
-    return sum({
-        'A': 1,
-        'E': 1,
-        'I': 1,
-        'O': 1,
-        'U': 1,
-        'L': 1,
-        'N': 1,
-        'R': 1,
-        'S': 1,
-        'T': 1,
-        'D': 2,
-        'G': 2,
-        'B': 3,
-        'C': 3,
-        'M': 3,
-        'P': 3,
-        'F': 4,
-        'H': 4,
-        'V': 4,
-        'W': 4,
-        'Y': 4,
-        'K': 5,
-        'J': 8,
-        'X': 8,
-        'Q': 10,
-        'Z': 10,
-    }[char] for char in word.upper())
+    result = 0
+    for char in word.upper():
+        if char in 'AEIOULNRST':
+            result += 1
+        elif char in 'DG':
+            result += 2
+        elif char in 'BCMP':
+            result += 3
+        elif char in 'FHVWY':
+            result += 4
+        elif char in 'K':
+            result += 5
+        elif char in 'JX':
+            result += 8
+        elif char in 'QZ':
+            result += 10
+    return result
