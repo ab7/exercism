@@ -1,4 +1,4 @@
-scores = {
+scores = {char: score for key, score in {
     'AEIOULNRST': 1,
     'DG': 2,
     'BCMP': 3,
@@ -6,9 +6,8 @@ scores = {
     'K': 5,
     'JX': 8,
     'QZ': 10
-}
+}.items() for char in key}
 
 
 def score(word):
-    scores_expanded = {char: score for key, score in scores.items() for char in key}
-    return sum(scores_expanded[char] for char in word.upper())
+    return sum(scores[char] for char in word.upper())
