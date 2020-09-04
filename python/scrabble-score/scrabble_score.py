@@ -1,18 +1,14 @@
+scores = {
+    'AEIOULNRST': 1,
+    'DG': 2,
+    'BCMP': 3,
+    'FHVWY': 4,
+    'K': 5,
+    'JX': 8,
+    'QZ': 10
+}
+
+
 def score(word):
-    result = 0
-    for char in word.upper():
-        if char in 'AEIOULNRST':
-            result += 1
-        elif char in 'DG':
-            result += 2
-        elif char in 'BCMP':
-            result += 3
-        elif char in 'FHVWY':
-            result += 4
-        elif char in 'K':
-            result += 5
-        elif char in 'JX':
-            result += 8
-        elif char in 'QZ':
-            result += 10
-    return result
+    scores_expanded = {char: score for key, score in scores.items() for char in key}
+    return sum(scores_expanded[char] for char in word.upper())
